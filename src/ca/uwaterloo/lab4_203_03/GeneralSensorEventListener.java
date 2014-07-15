@@ -1,7 +1,9 @@
 package ca.uwaterloo.lab4_203_03;
 
 import ca.uwaterloo.lab4_203_03.MainActivity.PlaceholderFragment;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 public class GeneralSensorEventListener implements SensorEventListener{
 	public static TextView valuesTextView;			// General Text View
 	public static TextView orientation;
+	public static Context context;
 	//Max Values
 	private float mNumOfAverage = 0;
 	private float mAverageMax = 0;
@@ -41,11 +44,14 @@ public class GeneralSensorEventListener implements SensorEventListener{
 	private static float pastStep = 1;
 	private static double NSHeading;
 	private static double EWHeading;
-	private final double STEP_DISTANCE = 0.75;
+	private final double STEP_DISTANCE = 0.85;
+	static String xDifString;
+	static String yDiffString;
 	
 	// Constructor calls addTextView and initializes string sensortype. 
 	public GeneralSensorEventListener(Context context, String sensorType, LinearLayout layout){
 		stepCounter = 0;
+		this.context = context;
 	}
 	
 	// Creating a text view for the listener. 
@@ -177,27 +183,60 @@ public class GeneralSensorEventListener implements SensorEventListener{
 				float azimuth = valuesOrientation[0] + (float)Math.toRadians(21);
 				//double degAzimuth = Math.toDegrees(azimuth) + 21;
 				if (pastStep == stepCounter){
+					//Calculating the distance traveled by the step
 					double currentDisX = STEP_DISTANCE * Math.sin(azimuth);
 					double currentDixY = STEP_DISTANCE * Math.cos(azimuth);
+					//Changing the Displacement
 					NSHeading += (STEP_DISTANCE * Math.cos(azimuth));
 					NSHeading = (double)Math.round(NSHeading * 100)/100;
 					EWHeading += (STEP_DISTANCE * Math.sin(azimuth));
 					EWHeading = (double)Math.round(EWHeading * 100)/100;
 					pastStep++;
+					
+					//Updating user location
 					PlaceholderFragment.xcoord += currentDisX;
 					PlaceholderFragment.ycoord -= currentDixY;
 					MainActivity.mapView.setUserPoint(PlaceholderFragment.xcoord, PlaceholderFragment.ycoord);
 					PlaceholderFragment.display.showDirection();
+					
+					//Checking if destination is reached
+					if ((int)PlaceholderFragment.xcoord ==(int)PlaceholderFragment.destination.x && (int)PlaceholderFragment.ycoord == (int)PlaceholderFragment.destination.y){
+						
+						//Pop-up alerting when destination is reached
+						new AlertDialog.Builder(context).setTitle("Destination Update").setMessage("You have reached the destination!").setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+					        public void onClick(DialogInterface dialog, int which) { 
+					            // continue
+					        }
+					     }).show();
+					}
+					
+					float currentX = GPSCoordinator.path.get(0).x;
+					float nextX = GPSCoordinator.path.get(1).x;
+					float currentY = GPSCoordinator.path.get(0).y;
+					float nextY = GPSCoordinator.path.get(1).y;
+					
+					float xDif = currentX - nextX;
+					float yDif = currentY - nextY;
+					
+					if (xDif > 0){
+						xDifString = "Travel West " + xDif + "m.";
+					}
+					else if (xDif <=0){
+						xDifString = "Travel East " + Math.abs(xDif) + "m.";
+					}
+					
+					if (yDif > 0){
+						yDiffString = "Travel North " + yDif + "m.";
+					}
+					else if (yDif <=0){
+						yDiffString = "Travel South " + Math.abs(yDif)+ "m.";
+					}
 				}
 				
-				GeneralSensorEventListener.orientation.setText(String.valueOf(azimuth) + "\nNorth-South Distance:" + String.valueOf(NSHeading)+  "\nEast-West Distance:" + String.valueOf(EWHeading));
-				if (PlaceholderFragment.xcoord != 0 & PlaceholderFragment.ycoord != 0){
-					//GeneralSensorEventListener.valuesTextView.setText(PlaceholderFragment.xcoord + "   " + PlaceholderFragment.ycoord + "\n" + PlaceholderFragment.destination.x + "  " + PlaceholderFragment.destination.y);
-				}
+				GeneralSensorEventListener.orientation.setText(String.valueOf(azimuth) + "\nNorth-South Distance:" + String.valueOf(NSHeading)+  "\nEast-West Distance:" + String.valueOf(EWHeading)
+						+ "\n" + xDifString + "\n" + yDiffString);
 			} 
 		}
-		//valuesTextView.setText(value + "\n\nSteps: " + stepCounter );
-		//Outputting the date values
 	} 
 
 }

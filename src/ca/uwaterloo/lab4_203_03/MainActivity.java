@@ -153,10 +153,13 @@ public class MainActivity extends Activity{
 		@Override
 		public void originChanged(MapView source, PointF loc) {
 			// TODO Auto-generated method stub
-			source.setUserPoint(loc);
-			if(!(mapView.getDestinationPoint() == null)){
-				display.showDirection();
-			}
+			mapView.setUserPoint(loc);
+			//Reset the User Point so that it goes back to the origin
+			current = mapView.getUserPoint();
+			xcoord = current.x;
+			ycoord = current.y;
+			//Path Finder
+			display.showDirection();
 		}
 
 		@Override
@@ -168,10 +171,9 @@ public class MainActivity extends Activity{
 				destination = mapView.getDestinationPoint();
 				xcoord = current.x;
 				ycoord = current.y;
-				//NavigationalMap navigationMap = new NavigationalMap();
-				//intercept = navigationMap.calculateIntersections(current, destination);
 			}
 			
+			//PathFinder
 			display.showDirection();
 				
 			

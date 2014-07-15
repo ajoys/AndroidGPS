@@ -30,203 +30,227 @@ public class GPSCoordinator {
 	static PointF dC = new PointF((float) 12.7, (float) 9.25);
 	static PointF dD = new PointF((float) 14.6, (float) 9.35);
 
+	static List<PointF> path;
 
 	public static List<PointF> calculatePathOne() {
 
-		List<PointF> pathOne = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathOne.add(mapView.getUserPoint());
-		pathOne.add(pA);
-		pathOne.add(pB);
-		pathOne.add(pC);
-		pathOne.add(pD);
-		pathOne.add(mapView.getDestinationPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pA);
+		path.add(pB);
+		path.add(pC);
+		path.add(pD);
+		path.add(mapView.getDestinationPoint());
 
-		return pathOne;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathTwo() {
 
-		List<PointF> pathTwo = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathTwo.add(mapView.getUserPoint());
-		pathTwo.add(pB);
-		pathTwo.add(pC);
-		pathTwo.add(pD);
-		pathTwo.add(mapView.getDestinationPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pB);
+		path.add(pC);
+		path.add(pD);
+		path.add(mapView.getDestinationPoint());
 
-		return pathTwo;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathThree() {
 
-		List<PointF> pathThree = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathThree.add(mapView.getUserPoint());
-		pathThree.add(pC);
-		pathThree.add(pD);
-		pathThree.add(mapView.getDestinationPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pC);
+		path.add(pD);
+		path.add(mapView.getDestinationPoint());
 
-		return pathThree;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathFour() {
 
-		List<PointF> pathFour = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathFour.add(mapView.getUserPoint());
-		pathFour.add(pD);
-		pathFour.add(mapView.getDestinationPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pD);
+		path.add(mapView.getDestinationPoint());
 
-		return pathFour;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathFive() {
 
-		List<PointF> pathFive = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathFive.add(mapView.getUserPoint());
-		pathFive.add(mapView.getDestinationPoint());
+		path.add(mapView.getUserPoint());
+		path.add(mapView.getDestinationPoint());
 
-		return pathFive;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathSix() {
 
-		List<PointF> pathSix = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathSix.add(mapView.getUserPoint());
-		pathSix.add(pA);
-		pathSix.add(pB);
-		pathSix.add(pC);
-		pathSix.add(mapView.getDestinationPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pA);
+		path.add(pB);
+		path.add(pC);
+		path.add(mapView.getDestinationPoint());
 
-		return pathSix;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathSeven() {
 
-		List<PointF> pathSeven = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathSeven.add(mapView.getUserPoint());
-		pathSeven.add(pA);
-		pathSeven.add(pB);
-		pathSeven.add(mapView.getDestinationPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pA);
+		path.add(pB);
+		path.add(mapView.getDestinationPoint());
 
-		return pathSeven;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathEight() {
 
-		List<PointF> pathEight = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathEight.add(mapView.getUserPoint());
-		pathEight.add(pB);
-		pathEight.add(pC);
-		pathEight.add(mapView.getDestinationPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pB);
+		path.add(pC);
+		path.add(mapView.getDestinationPoint());
 
-		return pathEight;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathNine() {
 
-		List<PointF> pathNine = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathNine.add(mapView.getDestinationPoint());
-		pathNine.add(pB);
-		pathNine.add(pC);
-		pathNine.add(mapView.getUserPoint());
-
-		return pathNine;
+		path.add(mapView.getUserPoint());
+		path.add(pC);
+		path.add(pB);
+		path.add(mapView.getDestinationPoint());
+		
+		return path;
 
 	}
 
 	public List<PointF> calculatePathTen() {
 
-		List<PointF> pathTen = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathTen.add(mapView.getDestinationPoint());
-		pathTen.add(pA);
-		pathTen.add(pB);
-		pathTen.add(mapView.getUserPoint());
-
-		return pathTen;
+		path.add(mapView.getUserPoint());
+		path.add(pB);
+		path.add(pA);
+		path.add(mapView.getDestinationPoint());
+		
+		return path;
 
 	}
 
 	public List<PointF> calculatePathEleven() {
 
-		List<PointF> pathEleven = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathEleven.add(mapView.getDestinationPoint());
-		pathEleven.add(pA);
-		pathEleven.add(pB);
-		pathEleven.add(pC);
-		pathEleven.add(mapView.getUserPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pC);
+		path.add(pB);
+		path.add(pA);
+		path.add(mapView.getDestinationPoint());		
 
-		return pathEleven;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathTwelve() {
 
-		List<PointF> pathTwelve = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathTwelve.add(mapView.getDestinationPoint());
-		pathTwelve.add(pD);
-		pathTwelve.add(mapView.getUserPoint());
-
-		return pathTwelve;
+		path.add(mapView.getUserPoint());
+		path.add(pD);
+		path.add(mapView.getDestinationPoint());
+		
+		return path;
 
 	}
 
 	public List<PointF> calculatePathThirteen() {
 
-		List<PointF> pathThirteen = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathThirteen.add(mapView.getDestinationPoint());
-		pathThirteen.add(pC);
-		pathThirteen.add(pD);
-		pathThirteen.add(mapView.getUserPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pD);
+		path.add(pC);
+		path.add(mapView.getDestinationPoint());
 
-		return pathThirteen;
+		return path;
 
 	}
 
 	public List<PointF> calculatePathFourteen() {
 
-		List<PointF> pathFourteen = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathFourteen.add(mapView.getDestinationPoint());
-		pathFourteen.add(pB);
-		pathFourteen.add(pC);
-		pathFourteen.add(pD);
-		pathFourteen.add(mapView.getUserPoint());
-
-		return pathFourteen;
+		path.add(mapView.getUserPoint());
+		path.add(pD);
+		path.add(pC);
+		path.add(pB);
+		path.add(mapView.getDestinationPoint());
+		
+		return path;
 
 	}
 
 	public static List<PointF> calculatePathFifteen() {
 
-		List<PointF> pathFifteen = new ArrayList<PointF>();
+		path = new ArrayList<PointF>();
 
-		pathFifteen.add(mapView.getDestinationPoint());
-		pathFifteen.add(pA);
-		pathFifteen.add(pB);
-		pathFifteen.add(pC);
-		pathFifteen.add(pD);
-		pathFifteen.add(mapView.getUserPoint());
+		path.add(mapView.getUserPoint());
+		path.add(pD);
+		path.add(pC);
+		path.add(pB);
+		path.add(pA);
+		path.add(mapView.getDestinationPoint());
+		
+		return path;
 
-		return pathFifteen;
+	}
+	public List<PointF> calculatePathSixteen() {
+
+		path = new ArrayList<PointF>();
+
+		path.add(mapView.getUserPoint());
+		path.add(pB);
+		path.add(mapView.getDestinationPoint());
+
+		return path;
+
+	}
+
+	public List<PointF> calculatePathSeventeen() {
+
+		path = new ArrayList<PointF>();
+
+		path.add(mapView.getUserPoint());
+		path.add(pC);
+		path.add(mapView.getDestinationPoint());
+
+		return path;
 
 	}
 
@@ -280,6 +304,12 @@ public class GPSCoordinator {
 		 }
 		 else if( mapView.getDestinationPoint().x < dA.x && mapView.getUserPoint().x > dD.x){
 			 mapView.setUserPath(calculatePathFifteen());
+		 }
+		 else if( mapView.getDestinationPoint().x > dA.x && mapView.getDestinationPoint().x < dB.x && mapView.getUserPoint().x > dA.x && mapView.getUserPoint().x < dB.x){
+			 mapView.setUserPath(calculatePathSixteen());
+		 }
+		 else if( mapView.getDestinationPoint().x > dB.x && mapView.getDestinationPoint().x < dC.x && mapView.getUserPoint().x > dB.x && mapView.getUserPoint().x < dC.x){
+			 mapView.setUserPath(calculatePathSeventeen());
 		 }
 	}
 
